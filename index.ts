@@ -1,4 +1,4 @@
-#! usr/bin/env node
+#! /usr/bin/env node
 
 import inquirer from "inquirer";
 import chalk from "chalk";
@@ -14,7 +14,7 @@ let user = await inquirer.prompt([
     message: chalk.blueBright.bold("Enter Your PIN"),
   },
 ]);
-if (user.pinCode == myPin) {
+if (user.pinCode === myPin) {
   console.log(chalk.yellowBright.bold("Welcome!!... AREEBA KHAN"));
 
   let operation = await inquirer.prompt([
@@ -25,9 +25,12 @@ if (user.pinCode == myPin) {
       choices: ["CheckBalance", "fastCash", "withDraw"],
     },
   ]);
+  console.log(operation.option)
+
   if (operation.option == "CheckBalance")
     console.log(chalk.yellow.bold(`Your Remaining Balance is  ${myBalance}`));
-  else if (operation.option == "fastCash") {
+  
+    else if (operation.option == "fastCash") {
     let cashDraw = await inquirer.prompt([
       {
         name: "draw",
@@ -45,7 +48,8 @@ if (user.pinCode == myPin) {
       )
     );
     console.log(chalk.greenBright.bold("THANK_YOU.... for your transiction"));
-  } else if (operation.option == "withDraw") {
+  } else if (operation.option == "withDraw")
+   {
     let amountDraw = await inquirer.prompt([
       {
         name: "amount",
